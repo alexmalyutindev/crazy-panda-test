@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameFieldView : MonoBehaviour
 {
-    public Action<Vector2Int> OnTouch;
+    public Action<Vector2Int> OnGroundTouch;
 
     [SerializeField]
     private FieldCellView _cellPrefab;
@@ -26,7 +26,7 @@ public class GameFieldView : MonoBehaviour
             {
                 var cell = Instantiate(_cellPrefab, _fieldContainer)
                     .Init(new Vector2Int(x, y));
-                cell.OnTouch += () => OnTouch?.Invoke(cell.Position);
+                cell.OnTouch += () => OnGroundTouch?.Invoke(cell.Position);
 
                 _field[x, y] = cell;
             }

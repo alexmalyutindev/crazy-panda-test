@@ -4,9 +4,8 @@ public class GameFieldPresenter
 {
     public GameFieldPresenter(GameFieldModel model, GameFieldView view)
     {
-        view.OnTouch += position =>
+        view.OnGroundTouch += position =>
         {
-            Debug.Log(position);
             view.Dig(position);
             if (model.TryGetDiamond())
                 view.PlaceDiamond(position);
