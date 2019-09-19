@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameFieldView : MonoBehaviour
+public class DiggableFieldView : MonoBehaviour
 {
-    public Action<Vector2Int> OnGroundTouch;
+    public Action<FieldCellView> OnGroundTouch;
+    public Action<FieldCellView> OnItemGrabed;
 
     [SerializeField]
     private FieldCellView _cellPrefab;
@@ -16,7 +17,7 @@ public class GameFieldView : MonoBehaviour
 
     private FieldCellView[,] _field;
 
-    public GameFieldView Init()
+    public DiggableFieldView Init()
     {
         _field = new FieldCellView[10, 10];
 
@@ -26,7 +27,8 @@ public class GameFieldView : MonoBehaviour
             {
                 var cell = Instantiate(_cellPrefab, _fieldContainer)
                     .Init(new Vector2Int(x, y));
-                cell.OnTouch += () => OnGroundTouch?.Invoke(cell.Position);
+                cell.OnTouch += current => OnGroundTouch?.Invoke(current);
+                cell.OnItemGrabed += current => OnItemGrabed?.Invoke(current);
 
                 _field[x, y] = cell;
             }
