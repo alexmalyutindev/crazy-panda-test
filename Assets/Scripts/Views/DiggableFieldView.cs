@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DiggableFieldView : MonoBehaviour
 {
@@ -13,7 +14,10 @@ public class DiggableFieldView : MonoBehaviour
     [SerializeField]
     private Sprite _diamond;
     [SerializeField]
+    private GameObject _diamondPrefab;
+    [SerializeField]
     private Transform _fieldContainer;
+
 
     private FieldCellView[,] _field;
 
@@ -28,7 +32,7 @@ public class DiggableFieldView : MonoBehaviour
                 var cell = Instantiate(_cellPrefab, _fieldContainer)
                     .Init(new Vector2Int(x, y));
                 cell.OnTouch += current => OnGroundTouch?.Invoke(current);
-                cell.OnItemGrabed += current => OnItemGrabed?.Invoke(current);
+                cell.OnItemGrabed += OnItemGrabedHandler;
 
                 _field[x, y] = cell;
             }
@@ -39,11 +43,16 @@ public class DiggableFieldView : MonoBehaviour
 
     public void PlaceDiamond(Vector2Int position)
     {
-        _field[position.x, position.y].PlaceItem(_diamond);
+        _field[position.x, position.y].PlaceItem(Instantiate(_diamondPrefab));
     }
 
     public void Dig(Vector2Int position)
     {
         _field[position.x, position.y].Dig();
+    }
+
+    private void OnItemGrabedHandler(BaseEventData eventData)
+    {
+        EventSystem.current.SetSelectedGameObject(Instantiate(_diamondPrefab, transform.root), eventData);
     }
 }

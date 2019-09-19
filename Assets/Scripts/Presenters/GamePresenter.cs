@@ -6,21 +6,29 @@ public class GamePresenter
         GameModel model,
         DiggableFieldView gameField,
         CounterView shovelConter,
-        CounterView diamondCounter)
+        CounterView diamondCounter,
+        BackpackView backpack
+    )
     {
         shovelConter.SetCount(model.ShovelCount);
 
         gameField.OnGroundTouch += fieldCell =>
         {
-            if (model.CanDig())
+            if (model.CanDig(fieldCell.Position))
             {
                 gameField.Dig(fieldCell.Position);
-                if (model.TryDigDiamond())
+                if (model.TryDigDiamond(fieldCell.Position))
                     gameField.PlaceDiamond(fieldCell.Position);
             }
         };
+        gameField.OnItemGrabed += cell =>
+        {
+            Debug.Log(cell);
+        };
+
+        backpack.OnItemGrabed += position => model.CollectDiamond(position);
 
         model.OnShavelCountChanged += count => shovelConter.SetCount(count);
-        model.OnDiamondCountChanged += count => shovelConter.SetCount(count);
+        model.OnDiamondCountChanged += count => diamondCounter.SetCount(count);
     }
 }

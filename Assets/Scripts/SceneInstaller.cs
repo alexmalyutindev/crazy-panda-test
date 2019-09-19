@@ -7,15 +7,20 @@ public class SceneInstaller : MonoBehaviour
     [SerializeField]
     private DiggableFieldView _gameField;
     [SerializeField]
-    private CounterView _shovelConter;
+    private CounterView _shovelCounter;
     [SerializeField]
     private CounterView _diamondCounter;
+    [SerializeField]
+    public BackpackView _backpack;
 
     void Start()
     {
-        _gameField.Init();
-        var model = new GameModel(99, 0.1f);
-
-        new GamePresenter(model, _gameField, _shovelConter, _diamondCounter);
+        new GamePresenter(
+            new GameModel(99, 6, 0.1f),
+            _gameField.Init(),
+            _shovelCounter,
+            _diamondCounter,
+            _backpack
+        );
     }
 }
