@@ -10,13 +10,13 @@ public class CounterView : MonoBehaviour
     private Text _counterText;
     [SerializeField]
     private Text _deltaText;
-    private Coroutine _showDeltaCoroutine;
+
     private int _count;
 
     void Start()
     {
         _counterText.text = _count.ToString();
-        _deltaText.gameObject.SetActive(false);
+        _deltaText.CrossFadeAlpha(0, 0, true);
     }
 
     public void SetCount(int count)
@@ -31,20 +31,12 @@ public class CounterView : MonoBehaviour
 
     private void ShowDelta(int delta)
     {
-        if (_showDeltaCoroutine != null)
-            StopCoroutine(_showDeltaCoroutine);
-        _showDeltaCoroutine = StartCoroutine(ShowDeltaCoroutine(delta));
-    }
-
-    private IEnumerator ShowDeltaCoroutine(int delta)
-    {
         var sign = delta > 0 ? "+" : "-";
         _deltaText.text = $"{sign}{Mathf.Abs(delta)}";
-
-        _deltaText.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.1f);
-        _deltaText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1);
-        _deltaText.gameObject.SetActive(false);
+        // var currentColor = _deltaText.color;
+        // currentColor.a = 1;
+        // _deltaText.color = currentColor;
+        _deltaText.CrossFadeAlpha(1, 0, true);
+        _deltaText.CrossFadeAlpha(0, 0.5f, true);
     }
 }
