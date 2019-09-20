@@ -21,10 +21,6 @@ public class GamePresenter
                     gameField.PlaceDiamond(fieldCell.Position);
             }
         };
-        gameField.OnItemGrabed += cell =>
-        {
-            Debug.Log(cell);
-        };
 
         backpack.OnItemGrabed += position => model.CollectDiamond(position);
 

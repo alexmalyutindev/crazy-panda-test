@@ -14,7 +14,6 @@ public class GameOverView : BaseMenuView
 
     public void Start()
     {
-        Debug.Log("Start");
         _lobby.onClick.AddListener(() => OnLobby?.Invoke());
         _restart.onClick.AddListener(() => OnRestart?.Invoke());
     }

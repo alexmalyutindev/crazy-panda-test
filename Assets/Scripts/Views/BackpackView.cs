@@ -8,7 +8,6 @@ public class BackpackView : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Drop");
         var cell = eventData.pointerDrag.GetComponent<FieldCellView>();
         if (cell != null && cell.Item != null)
         {

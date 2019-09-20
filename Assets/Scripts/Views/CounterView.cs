@@ -30,9 +30,7 @@ public class CounterView : MonoBehaviour
     {
         var sign = delta > 0 ? "+" : "-";
         _deltaText.text = $"{sign}{Mathf.Abs(delta)}";
-        // var currentColor = _deltaText.color;
-        // currentColor.a = 1;
-        // _deltaText.color = currentColor;
+
         _deltaText.CrossFadeAlpha(1, 0, true);
         _deltaText.CrossFadeAlpha(0, 0.5f, true);
     }

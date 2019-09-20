@@ -7,10 +7,7 @@ public class FieldCellView : MonoBehaviour, IPointerClickHandler,
     IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Action<FieldCellView> OnTouch;
-    public Action<BaseEventData> OnItemGrabed;
-
     public Vector2Int Position => _position;
-
     public GameObject Item => _item;
 
     [SerializeField]

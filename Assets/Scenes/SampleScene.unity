@@ -568,15 +568,5 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3453686402884634486, guid: 9c43e89a45e5444b2bc8c97b0d782f32,
-        type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3453686403319001597, guid: 9c43e89a45e5444b2bc8c97b0d782f32,
-        type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c43e89a45e5444b2bc8c97b0d782f32, type: 3}

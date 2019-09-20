@@ -28,6 +28,7 @@ public class ProjectInstaller : MonoBehaviour
         _gameOver.OnLobby += () =>
         {
             EndGame();
+            _gameOver.Hide();
             _lobby.Show();
         };
 
