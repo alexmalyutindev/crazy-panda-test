@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CounterView : MonoBehaviour
 {
     [SerializeField]
-    private Text _counterText;
+    private TextMeshProUGUI _counterText;
     [SerializeField]
-    private Text _deltaText;
+    private TextMeshProUGUI _deltaText;
 
     private int _count;
 
