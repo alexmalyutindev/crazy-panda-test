@@ -10,7 +10,7 @@ public class BackpackView : MonoBehaviour, IDropHandler
     {
         Debug.Log("Drop");
         var cell = eventData.pointerDrag.GetComponent<FieldCellView>();
-        if (cell != null)
+        if (cell != null && cell.Item != null)
         {
             var item = cell.ReleaseItem();
             Destroy(item);
