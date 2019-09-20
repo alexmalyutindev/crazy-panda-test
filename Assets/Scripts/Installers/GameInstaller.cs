@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SceneInstaller : MonoBehaviour
+public class GameInstaller : MonoBehaviour
 {
     [SerializeField]
     private DiggableFieldView _gameField;
@@ -11,16 +9,22 @@ public class SceneInstaller : MonoBehaviour
     [SerializeField]
     private CounterView _diamondCounter;
     [SerializeField]
-    public BackpackView _backpack;
+    private BackpackView _backpack;
 
-    void Start()
+    public GameModel Game => _game;
+    private GameModel _game;
+
+    public GameInstaller Init(GameContext context)
     {
+        _game = new GameModel(context.ShovelCount, context.FieldDepth, context.DiamondProbability);
         new GamePresenter(
-            new GameModel(99, 6, 0.1f),
+            _game,
             _gameField.Init(),
             _shovelCounter,
             _diamondCounter,
             _backpack
         );
+
+        return this;
     }
 }

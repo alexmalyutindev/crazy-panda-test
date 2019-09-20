@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2223696400890751788}
   - component: {fileID: 2223696400890751794}
   - component: {fileID: 2223696400890751795}
-  - component: {fileID: 2068165494140232179}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Untagged
@@ -75,15 +74,3 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &2068165494140232179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2223696400890751789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d0b0d415c0ed47e28f704e9e6dbb9e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
